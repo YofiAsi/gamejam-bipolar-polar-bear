@@ -10,7 +10,7 @@
 
 **Bipolar Polar Bear** is a pixel-art 2D survival shooter made for **Melon Game Jam 2024**, where it placed **2nd overall**.
 
-<img align="right" width="30%" src="https://img.itch.zone/aW1hZ2UvMzIxMzA0MS8xOTE5OTkxOS5naWY=/original/f5UKS7.gif" alt="Gameplay" />
+<img align="right" width="300px" src="https://img.itch.zone/aW1hZ2UvMzIxMzA0MS8xOTE5OTkxOS5naWY=/original/f5UKS7.gif" alt="Gameplay" />
 
 You play as a polar bear who can't control his own mood. Every few seconds, your state flips between anger and fear - affecting the way you play the character.
 Survive 20 minutes across 14 escalating enemy waves while adapting to a character you only half-control.
