@@ -3,12 +3,12 @@
   
   <br/>
   
-  ### 🥈 2nd Place — Melon Game Jam 2024 🥈  
+  ### 🥉 3nd Place — Melon Game Jam 2024 🥉  
 </div>
 
 ## 🎮 About
 
-**Bipolar Polar Bear** is a pixel-art 2D survival shooter made for **Melon Game Jam 2024**, where it placed **2nd overall**.
+**Bipolar Polar Bear** is a pixel-art 2D survival shooter made for **Melon Game Jam 2024**, where it placed **3nd overall**.
 
 <img align="right" width="300px" src="https://img.itch.zone/aW1hZ2UvMzIxMzA0MS8xOTE5OTkxOS5naWY=/original/f5UKS7.gif" alt="Gameplay" />
 
