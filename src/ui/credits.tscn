@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5jjr65qmeowg"]
+
+[ext_resource type="Script" path="res://src/ui/credits.gd" id="1_0n5t2"]
+[ext_resource type="Theme" uid="uid://n1sfbsbj0mfl" path="res://src/ui/credits.tres" id="1_0ufqg"]
+[ext_resource type="FontFile" uid="uid://c4mm3of2mc8o5" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="3_ofnmd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ex3v7"]
+font = ExtResource("3_ofnmd")
+font_size = 200
+
+[sub_resource type="LabelSettings" id="LabelSettings_ub4sh"]
+font = ExtResource("3_ofnmd")
+font_size = 80
+
+[node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_0n5t2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.103743, 0.103744, 0.103744, 0.529412)
+
+[node name="Play" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -137.0
+offset_top = -363.0
+offset_right = 137.0
+offset_bottom = -239.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_0ufqg")
+theme_override_font_sizes/font_size = 35
+text = "Play Again
+"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 655.0
+grow_horizontal = 2
+text = "Game Over!"
+label_settings = SubResource("LabelSettings_ex3v7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 1075.0
+grow_horizontal = 2
+text = "try doing better next time"
+label_settings = SubResource("LabelSettings_ub4sh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

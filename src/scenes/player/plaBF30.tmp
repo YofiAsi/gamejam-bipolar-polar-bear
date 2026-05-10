@@ -1,0 +1,167 @@
+[gd_scene load_steps=25 format=3 uid="uid://c5r4m16m76lv2"]
+
+[ext_resource type="Script" path="res://addons/YofiComponents/components/control_2d/player_control_2d.gd" id="1_fgnes"]
+[ext_resource type="Script" path="res://src/scenes/player/player.gd" id="1_j3gql"]
+[ext_resource type="Script" path="res://addons/YofiComponents/components/movement_2d/movement_2d.gd" id="2_itwbw"]
+[ext_resource type="Texture2D" uid="uid://cetg0hn5360c4" path="res://assets/sprites/polar_bear/PolarBearSpriteSheet.png" id="4_dtfyr"]
+[ext_resource type="Script" path="res://addons/YofiComponents/components/hurtbox_2d/hurtbox_2d.gd" id="5_d68in"]
+[ext_resource type="PackedScene" uid="uid://tje7cdvqan0r" path="res://addons/YofiComponents/components/gun360_2d/gun360.tscn" id="5_estjq"]
+[ext_resource type="Script" path="res://src/scenes/player/animation_manager.gd" id="5_jyfic"]
+[ext_resource type="Texture2D" uid="uid://bvvhda65f1d3s" path="res://assets/sprites/polar_bear/little-bear-idle.png" id="6_om1o7"]
+[ext_resource type="Texture2D" uid="uid://bp07gn3ai63o3" path="res://assets/sprites/polar_bear/little-bear-walk.png" id="7_hh1mu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wsua"]
+size = Vector2(51, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r7fv"]
+atlas = ExtResource("4_dtfyr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06l1m"]
+atlas = ExtResource("4_dtfyr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihp0f"]
+atlas = ExtResource("4_dtfyr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qqjh"]
+atlas = ExtResource("4_dtfyr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etajm"]
+atlas = ExtResource("4_dtfyr")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5k53"]
+atlas = ExtResource("4_dtfyr")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfueb"]
+atlas = ExtResource("4_dtfyr")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yltia"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r7fv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06l1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihp0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qqjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etajm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5k53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfueb")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1b05"]
+atlas = ExtResource("6_om1o7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbatv"]
+atlas = ExtResource("7_hh1mu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0d5g"]
+atlas = ExtResource("7_hh1mu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7emx"]
+atlas = ExtResource("7_hh1mu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd6nd"]
+atlas = ExtResource("7_hh1mu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_46bjo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1b05")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbatv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0d5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7emx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd6nd")
+}],
+"loop": true,
+"name": &"run",
+"speed": 9.0
+}]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_j3gql")
+
+[node name="PlayerControl2D" type="Node2D" parent="." node_paths=PackedStringArray("movement_control")]
+script = ExtResource("1_fgnes")
+movement_control = NodePath("../Movement2D")
+
+[node name="Movement2D" type="Node2D" parent="." node_paths=PackedStringArray("animated_sprite")]
+position = Vector2(2, -1)
+script = ExtResource("2_itwbw")
+BASE_ACCELERATION = 9999.0
+BASE_DECELERATION = 9999.0
+BASE_TURN_SPEED = 9999.0
+BASE_MAX_SPEED = 400.0
+animated_sprite = NodePath("../AnimationManager")
+
+[node name="Gun360" parent="." instance=ExtResource("5_estjq")]
+rotation = 18.5208
+radius = 50.0
+
+[node name="Hurtbox2D" type="Area2D" parent="." groups=["player"]]
+script = ExtResource("5_d68in")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
+position = Vector2(-3.5, 2.5)
+shape = SubResource("RectangleShape2D_4wsua")
+
+[node name="AnimationManager" type="Node2D" parent="."]
+script = ExtResource("5_jyfic")
+
+[node name="BigAnimatedSprite" type="AnimatedSprite2D" parent="AnimationManager"]
+position = Vector2(5, -16)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_yltia")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="SmallAnimatedSprite" type="AnimatedSprite2D" parent="AnimationManager"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_46bjo")
+animation = &"idle"
+autoplay = "idle"

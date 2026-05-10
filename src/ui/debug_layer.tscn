@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjmug3xpdcipv"]
+
+[ext_resource type="Script" path="res://debug.gd" id="1_uwplv"]
+
+[sub_resource type="Theme" id="Theme_6k7n0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_653ku"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_05sq3"]
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/styles/normal = SubResource("StyleBoxFlat_653ku")
+
+[node name="DebugLayer" type="CanvasLayer"]
+script = ExtResource("1_uwplv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -67.0
+offset_bottom = 104.0
+grow_horizontal = 0
+theme = SubResource("Theme_6k7n0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_05sq3")
+text = "max hp: "
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_05sq3")
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = SubResource("Theme_05sq3")
+text = "attack speed"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = SubResource("Theme_05sq3")
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme = SubResource("Theme_05sq3")
+text = "mvm speed:"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme = SubResource("Theme_05sq3")
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme = SubResource("Theme_05sq3")
+text = "hp reg"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme = SubResource("Theme_05sq3")
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme = SubResource("Theme_05sq3")
+text = "dmg"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme = SubResource("Theme_05sq3")
+text = "0"
+horizontal_alignment = 2

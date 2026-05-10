@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2lljpkvg3xa7"]
+
+[ext_resource type="Texture2D" uid="uid://bgjr2w4eepm7t" path="res://assets/sprites/text_box/text_box.png" id="1_6cvxb"]
+[ext_resource type="Script" path="res://src/scenes/player/text_box.gd" id="1_o5rab"]
+[ext_resource type="FontFile" uid="uid://c4mm3of2mc8o5" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="2_l8pto"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4q3c"]
+font = ExtResource("2_l8pto")
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+
+[node name="TextBox" type="Node2D"]
+script = ExtResource("1_o5rab")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_6cvxb")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -115.0
+offset_top = -56.0
+offset_right = 111.0
+offset_bottom = 37.0
+size_flags_horizontal = 4
+text = "Mommy I'm Scared"
+label_settings = SubResource("LabelSettings_g4q3c")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

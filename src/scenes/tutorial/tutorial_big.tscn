@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1qie754x88ep"]
+
+[ext_resource type="Script" path="res://src/scenes/tutorial/tutorial_big.gd" id="1_0v28n"]
+[ext_resource type="Texture2D" uid="uid://dpvwexac1ghxn" path="res://assets/sprites/tutorial/tranform-left.png" id="1_fy4jt"]
+[ext_resource type="Texture2D" uid="uid://co46rfgicoiku" path="res://assets/sprites/tutorial/move_1.png" id="2_pv2ia"]
+[ext_resource type="FontFile" uid="uid://c4mm3of2mc8o5" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="3_klj2r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xudu"]
+font = ExtResource("3_klj2r")
+font_size = 68
+
+[sub_resource type="LabelSettings" id="LabelSettings_7utuf"]
+font = ExtResource("3_klj2r")
+font_size = 68
+
+[sub_resource type="LabelSettings" id="LabelSettings_h710n"]
+font = ExtResource("3_klj2r")
+font_size = 58
+
+[node name="TutorialBig" type="CanvasLayer"]
+script = ExtResource("1_0v28n")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.564706)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+position = Vector2(1373.18, 557.738)
+scale = Vector2(0.328221, 0.328221)
+texture = ExtResource("1_fy4jt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control"]
+position = Vector2(549.673, 511.869)
+scale = Vector2(0.249123, 0.252467)
+texture = ExtResource("2_pv2ia")
+
+[node name="Label" type="Label" parent="Control"]
+offset_left = 1187.18
+offset_top = 734.738
+offset_right = 1583.18
+offset_bottom = 827.738
+text = "aim & shoot"
+label_settings = SubResource("LabelSettings_8xudu")
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 467.184
+offset_top = 734.738
+offset_right = 642.184
+offset_bottom = 827.738
+text = "move"
+label_settings = SubResource("LabelSettings_8xudu")
+
+[node name="Label3" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -129.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "press 'SPACE'"
+label_settings = SubResource("LabelSettings_8xudu")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -436.0
+offset_bottom = -343.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "This is a Bi-Polar Polar bear"
+label_settings = SubResource("LabelSettings_7utuf")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -335.0
+offset_bottom = -242.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "His mood swings wildly and unpredictably "
+label_settings = SubResource("LabelSettings_h710n")
+horizontal_alignment = 1

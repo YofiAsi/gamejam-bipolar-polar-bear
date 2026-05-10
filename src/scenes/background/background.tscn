@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7v0i2ndwgjid"]
+
+[ext_resource type="Shader" path="res://src/scenes/background/background.gdshader" id="1_6w34b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t5r0o"]
+shader = ExtResource("1_6w34b")
+shader_parameter/color0 = Color(0.53, 0.81, 0.92, 1)
+shader_parameter/color1 = Color(0.27, 0.58, 0.8, 1)
+shader_parameter/camera_position = Vector2(0, 0)
+shader_parameter/camera_scale = 1.0
+shader_parameter/noise_frequency = 0.004
+shader_parameter/noise_offset = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pto8t"]
+
+[node name="Background" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -100
+material = SubResource("ShaderMaterial_t5r0o")
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("PlaceholderTexture2D_pto8t")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgj7l6h28bn0p"]
+
+[ext_resource type="Texture2D" uid="uid://bi6kcvb6fbksh" path="res://assets/sprites/ground/Snow_Snowman.png" id="1_pno7l"]
+
+[node name="Snow" type="Sprite2D"]
+position = Vector2(0, -60)
+scale = Vector2(5, 5)
+texture = ExtResource("1_pno7l")
+offset = Vector2(0, 8)

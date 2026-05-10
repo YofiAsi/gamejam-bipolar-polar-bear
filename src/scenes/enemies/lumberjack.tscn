@@ -1,0 +1,178 @@
+[gd_scene load_steps=23 format=3 uid="uid://7cc4ef1k4ax"]
+
+[ext_resource type="Script" path="res://src/scenes/enemies/lumberjack.gd" id="1_q6o7q"]
+[ext_resource type="Texture2D" uid="uid://burdmahn4iuv1" path="res://assets/sprites/enemies/MiniLumberjack.png" id="1_sq7ds"]
+[ext_resource type="Script" path="res://addons/YofiComponents/components/hurtbox_2d/hurtbox_2d.gd" id="2_csgvm"]
+[ext_resource type="Script" path="res://addons/YofiComponents/components/movement_2d/movement_2d.gd" id="4_fvfk3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x24g"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxnva"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtpw0"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e74u5"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrdeb"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dqoh"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr3qo"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv4hh"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oonfv"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vixx"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t70cx"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu02m"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7crr4"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4afq"]
+atlas = ExtResource("1_sq7ds")
+region = Rect2(160, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmufa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1x24g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxnva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtpw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e74u5")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrdeb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dqoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wr3qo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vv4hh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oonfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vixx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t70cx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu02m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7crr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4afq")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fp85r"]
+size = Vector2(46, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_by2bg"]
+size = Vector2(38, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qo4rd"]
+size = Vector2(33, 25)
+
+[node name="Lumberjack" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_q6o7q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_xmufa")
+animation = &"run"
+autoplay = "idle"
+offset = Vector2(0, -15)
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(1, -26.5)
+shape = SubResource("RectangleShape2D_fp85r")
+debug_color = Color(0.976471, 0.027451, 0.388235, 0.129412)
+
+[node name="Hurtbox2D" type="Area2D" parent="." node_paths=PackedStringArray("movement_2d")]
+script = ExtResource("2_csgvm")
+BASE_MAX_HP = 5
+movement_2d = NodePath("../Movement2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
+position = Vector2(0, -26)
+shape = SubResource("RectangleShape2D_by2bg")
+
+[node name="Movement2D" type="Node2D" parent="."]
+script = ExtResource("4_fvfk3")
+BASE_ACCELERATION = 1000.0
+BASE_TURN_SPEED = 1000.0
+BASE_MAX_SPEED = 126.2
+
+[node name="DeathQueueTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -12.5)
+shape = SubResource("RectangleShape2D_qo4rd")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="death_signal" from="Hurtbox2D" to="." method="_on_hurtbox_2d_death_signal"]
+[connection signal="hurt_signal" from="Hurtbox2D" to="." method="_on_hurtbox_2d_hurt_signal"]
+[connection signal="timeout" from="DeathQueueTimer" to="." method="_on_death_queue_timer_timeout"]

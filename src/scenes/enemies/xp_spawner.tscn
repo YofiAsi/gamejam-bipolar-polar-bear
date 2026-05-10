@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://clvqmvacar5ep"]
+
+[ext_resource type="Script" path="res://src/scenes/enemies/xp_spawner.gd" id="1_hetxh"]
+
+[node name="XpSpawner" type="Node2D"]
+script = ExtResource("1_hetxh")

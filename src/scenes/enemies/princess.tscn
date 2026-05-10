@@ -1,0 +1,133 @@
+[gd_scene load_steps=17 format=3 uid="uid://dysvhqoxci87v"]
+
+[ext_resource type="Script" path="res://src/scenes/enemies/villager.gd" id="1_4t7a8"]
+[ext_resource type="Texture2D" uid="uid://diggwh7p64nrw" path="res://assets/sprites/enemies/MiniPrincess.png" id="2_n6v6l"]
+[ext_resource type="Script" path="res://addons/YofiComponents/components/hurtbox_2d/hurtbox_2d.gd" id="3_r60mv"]
+[ext_resource type="Script" path="res://addons/YofiComponents/components/movement_2d/movement_2d.gd" id="4_rutjo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e82os"]
+atlas = ExtResource("2_n6v6l")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxtw4"]
+atlas = ExtResource("2_n6v6l")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2k26"]
+atlas = ExtResource("2_n6v6l")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mf5gx"]
+atlas = ExtResource("2_n6v6l")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7vpy"]
+atlas = ExtResource("2_n6v6l")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2t44"]
+atlas = ExtResource("2_n6v6l")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol715"]
+atlas = ExtResource("2_n6v6l")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iejbg"]
+atlas = ExtResource("2_n6v6l")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_225fa"]
+atlas = ExtResource("2_n6v6l")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmufa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e82os")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxtw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2k26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mf5gx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7vpy")
+}],
+"loop": false,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2t44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol715")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iejbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_225fa")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_by2bg"]
+size = Vector2(38, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qo4rd"]
+size = Vector2(33, 25)
+
+[node name="Princess" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_4t7a8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_xmufa")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.576031
+offset = Vector2(0, -15)
+
+[node name="Hurtbox2D" type="Area2D" parent="." node_paths=PackedStringArray("movement_2d")]
+script = ExtResource("3_r60mv")
+BASE_MAX_HP = 1
+movement_2d = NodePath("../Movement2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
+position = Vector2(0, -26)
+shape = SubResource("RectangleShape2D_by2bg")
+
+[node name="Movement2D" type="Node2D" parent="."]
+script = ExtResource("4_rutjo")
+BASE_ACCELERATION = 1000.0
+BASE_TURN_SPEED = 1000.0
+BASE_MAX_SPEED = 126.2
+
+[node name="DeathQueueTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -12.5)
+shape = SubResource("RectangleShape2D_qo4rd")
+
+[connection signal="death_signal" from="Hurtbox2D" to="." method="_on_hurtbox_2d_death_signal"]
+[connection signal="hurt_signal" from="Hurtbox2D" to="." method="_on_hurtbox_2d_hurt_signal"]
+[connection signal="timeout" from="DeathQueueTimer" to="." method="_on_death_queue_timer_timeout"]

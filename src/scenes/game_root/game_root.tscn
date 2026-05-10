@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://bncady5tbiqvl"]
+
+[ext_resource type="Script" path="res://src/scenes/game_root/game_root.gd" id="1_0ki88"]
+[ext_resource type="PackedScene" uid="uid://b2tx8a74p18yu" path="res://src/ui/pause_menu.tscn" id="1_vvpov"]
+[ext_resource type="PackedScene" uid="uid://dt075nt4lg5ut" path="res://src/scenes/game_root/game_manager.tscn" id="2_w5syi"]
+[ext_resource type="PackedScene" uid="uid://c5jjr65qmeowg" path="res://src/ui/credits.tscn" id="4_ovbbx"]
+[ext_resource type="PackedScene" uid="uid://do1ckp5tkuooc" path="res://src/ui/powerup_menu.tscn" id="5_cjc37"]
+[ext_resource type="PackedScene" uid="uid://cjmug3xpdcipv" path="res://src/ui/debug_layer.tscn" id="6_vv1g6"]
+[ext_resource type="PackedScene" uid="uid://b1qie754x88ep" path="res://src/scenes/tutorial/tutorial_big.tscn" id="7_s3prx"]
+[ext_resource type="PackedScene" uid="uid://blvg05ixk8n6n" path="res://src/scenes/tutorial/tutorial_small.tscn" id="8_10aqb"]
+
+[node name="GameRoot" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_0ki88")
+
+[node name="GameManager" parent="." instance=ExtResource("2_w5syi")]
+process_mode = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_vvpov")]
+visible = false
+
+[node name="Credits" parent="." instance=ExtResource("4_ovbbx")]
+visible = false
+
+[node name="PowerupMenu" parent="." instance=ExtResource("5_cjc37")]
+visible = false
+
+[node name="DebugLayer" parent="." instance=ExtResource("6_vv1g6")]
+
+[node name="TutorialBig" parent="." instance=ExtResource("7_s3prx")]
+visible = false
+
+[node name="TutorialSmall" parent="." instance=ExtResource("8_10aqb")]
+visible = false
+
+[connection signal="visibility_changed" from="PauseMenu" to="PauseMenu" method="_on_visibility_changed"]
+[connection signal="pressed" from="PauseMenu/Control/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Control/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+
+[editable path="PauseMenu"]

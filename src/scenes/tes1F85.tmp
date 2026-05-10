@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0uwtn1pfnnhw"]
+
+[ext_resource type="PackedScene" uid="uid://cmh25wk28wfdd" path="res://src/scenes/test.tscn" id="1_ti615"]
+[ext_resource type="PackedScene" uid="uid://chnagfk7sp1fx" path="res://src/scenes/ship.tscn" id="2_p5htm"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Test" parent="." instance=ExtResource("1_ti615")]
+position = Vector2(737, 331)
+
+[node name="Ship" parent="." instance=ExtResource("2_p5htm")]
+position = Vector2(264, 173)

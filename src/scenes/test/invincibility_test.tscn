@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://b66hist0arxr6"]
+
+[ext_resource type="Script" path="res://src/scenes/test/invincibility_test.gd" id="1_tthn6"]
+[ext_resource type="PackedScene" uid="uid://c5r4m16m76lv2" path="res://src/scenes/player/player.tscn" id="2_s1kcc"]
+
+[node name="InvincibilityTest" type="Node2D"]
+script = ExtResource("1_tthn6")
+
+[node name="Player" parent="." instance=ExtResource("2_s1kcc")]
+position = Vector2(960, 540)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "hp: "
+
+[node name="HpLabel" type="Label" parent="CanvasLayer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 300.0
+offset_bottom = 125.0
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer2"]
+layout_mode = 2
+text = "hit"
+
+[node name="VBoxContainer3" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+text = "dmg: "
+
+[node name="DmgLabel" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+text = "0"
+
+[node name="DmgSlider" type="HSlider" parent="CanvasLayer/VBoxContainer2"]
+layout_mode = 2
+max_value = 30.0
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+text = "regen: "
+
+[node name="RegenLabel" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="RegenSlider" type="HSlider" parent="CanvasLayer/VBoxContainer2"]
+layout_mode = 2
+max_value = 10.0
+step = 0.2
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/VBoxContainer2/DmgSlider" to="." method="_on_dmg_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/VBoxContainer2/RegenSlider" to="." method="_on_regen_slider_value_changed"]

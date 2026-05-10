@@ -1,0 +1,156 @@
+[gd_scene load_steps=13 format=3 uid="uid://bvxy002outyrw"]
+
+[ext_resource type="Script" path="res://src/scenes/root.gd" id="1_o72g0"]
+[ext_resource type="Texture2D" uid="uid://cetg0hn5360c4" path="res://assets/sprites/polar_bear/PolarBearSpriteSheet.png" id="1_wunq6"]
+[ext_resource type="PackedScene" uid="uid://c7v0i2ndwgjid" path="res://src/scenes/background/background.tscn" id="2_nqxvj"]
+[ext_resource type="Texture2D" uid="uid://bvvhda65f1d3s" path="res://assets/sprites/polar_bear/little-bear-idle.png" id="2_ofcvn"]
+[ext_resource type="Texture2D" uid="uid://dtv7eapewdomq" path="res://assets/particles/particleflare_small.svg" id="5_vfw6h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2owj8"]
+font_size = 120
+outline_size = 60
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_noscj"]
+font_size = 40
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcetl"]
+atlas = ExtResource("1_wunq6")
+region = Rect2(640, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2w7c2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcetl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy186"]
+atlas = ExtResource("2_ofcvn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qvgaj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy186")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_6uoyc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.170022, 0.797388), 1.63185, 1.63185, 0, 0, Vector2(0.501119, 1), 0.0, 0.0, 0, 0, Vector2(0.854586, 0.830244), -1.04904, -1.04904, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_o72g0")
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -141.0
+offset_top = 459.0
+offset_right = 142.0
+offset_bottom = 638.0
+grow_horizontal = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Button" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+text = "Start"
+
+[node name="Music" type="HSlider" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFX" type="HSlider" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenu"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 118.0
+offset_bottom = 405.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+text = "Bipolar Polar Bear"
+label_settings = SubResource("LabelSettings_2owj8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MainMenu"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -4.0
+offset_top = 224.0
+offset_right = -4.0
+offset_bottom = 511.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+text = "By YofiAsi"
+label_settings = SubResource("LabelSettings_noscj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="MainMenu"]
+offset_left = 753.0
+offset_top = 599.0
+offset_right = 799.0
+offset_bottom = 622.0
+text = "SFX
+"
+
+[node name="Label4" type="Label" parent="MainMenu"]
+offset_left = 753.0
+offset_top = 567.0
+offset_right = 799.0
+offset_bottom = 590.0
+text = "Music"
+
+[node name="Background" parent="MainMenu" instance=ExtResource("2_nqxvj")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(543, 523)
+scale = Vector2(35, 35)
+sprite_frames = SubResource("SpriteFrames_2w7c2")
+frame_progress = 0.821842
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(1600, 763)
+scale = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_qvgaj")
+flip_h = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(938, 554)
+amount = 100
+lifetime = 10.0
+texture = ExtResource("5_vfw6h")
+emission_shape = 3
+emission_rect_extents = Vector2(1920, 1080)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_min = 10.0
+angular_velocity_max = 100.0
+scale_amount_min = 0.2
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_6uoyc")
+
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="MainMenu/VBoxContainer/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="MainMenu/VBoxContainer/SFX" to="." method="_on_sfx_value_changed"]

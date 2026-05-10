@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://7d2g3feys1w7"]
+
+[ext_resource type="Script" path="res://src/scenes/game_root/winning_timer.gd" id="1_5u2lp"]
+[ext_resource type="FontFile" uid="uid://c4mm3of2mc8o5" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="2_elhct"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bip04"]
+font = ExtResource("2_elhct")
+font_size = 40
+outline_size = 30
+outline_color = Color(0, 0, 0, 1)
+
+[node name="WinningTimer" type="CanvasLayer"]
+script = ExtResource("1_5u2lp")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 56.0
+grow_horizontal = 2
+text = "20:00"
+label_settings = SubResource("LabelSettings_bip04")
+horizontal_alignment = 1

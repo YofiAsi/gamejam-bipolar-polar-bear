@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://blvg05ixk8n6n"]
+
+[ext_resource type="Script" path="res://src/scenes/tutorial/tutorial_big.gd" id="1_xskhg"]
+[ext_resource type="Texture2D" uid="uid://cgaakh0j1rdjm" path="res://assets/sprites/tutorial/tranform-right.png" id="2_5abui"]
+[ext_resource type="FontFile" uid="uid://c4mm3of2mc8o5" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="4_iv7q6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xudu"]
+font = ExtResource("4_iv7q6")
+font_size = 68
+
+[node name="TutorialSmall" type="CanvasLayer"]
+script = ExtResource("1_xskhg")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.564706)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+position = Vector2(1506, 492)
+scale = Vector2(0.328221, 0.328221)
+texture = ExtResource("2_5abui")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1230.0
+offset_top = 99.0
+offset_right = -143.0
+offset_bottom = 439.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "speed boost & invincibility"
+label_settings = SubResource("LabelSettings_8xudu")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label4" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 179.0
+offset_top = -130.0
+offset_right = -894.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "When small:
+Collect XP and food"
+label_settings = SubResource("LabelSettings_8xudu")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -512.0
+offset_bottom = -323.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Goal: 
+Survive 20 minutes"
+label_settings = SubResource("LabelSettings_8xudu")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -265.0
+offset_right = -1066.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "This is transform timer
+V"
+label_settings = SubResource("LabelSettings_8xudu")
+horizontal_alignment = 1
