@@ -15,7 +15,7 @@
 
 [![Play on itch.io](https://img.itch.zone/aW1hZ2UvMzIxMzA0MS8xOTE5OTkxOS5naWY=/original/f5UKS7.gif)](https://yofiasi.itch.io/bipolar-polar-bear)
 
-▶️ **[Play on itch.io](https://yofiasi.itch.io/bipolar-polar-bear)**
+[![Play on itch.io](https://img.shields.io/badge/Play%20on%20itch.io-FA5C5C?style=for-the-badge&logo=itch.io&logoColor=white)](https://yofiasi.itch.io/bipolar-polar-bear)
 
 </div>
 
